@@ -1,9 +1,10 @@
-import { FileVideo, Github, Upload } from 'lucide-react'
+import { FileVideo, Github, Upload, Wand2 } from 'lucide-react'
 import { Button } from "./components/ui/button";
 import { Separator } from './components/ui/separator';
 import { Textarea } from './components/ui/textarea';
 import { Label } from './components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './components/ui/select';
+import { Slider } from './components/ui/slider';
 
 export function App() {
   return (
@@ -95,18 +96,22 @@ export function App() {
 
             <div className='space-y-2'>
               <Label>Temperatura</Label>
-              <Select disabled defaultValue='gtp3.5'>
-                <SelectTrigger>
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="gpt3.5">GPT 3.5-turbo 16k</SelectItem>
-                </SelectContent>
-              </Select>
+              <Slider 
+                min={0}
+                max={1}
+                step={0.1}
+              />
               <span className='block text-xs text-muted-foreground italic'>
-                Valores mais altos tendem a deixar o resultado mais criativo
+                Valores mais altos tendem a deixar o resultado mais criativo e com possíveis erros
               </span>
             </div>
+
+            <Separator />
+
+            <Button type='submit' className='w-full'>
+              Executar
+              <Wand2 className='w-4 h-4 ml-2'/>
+            </Button>
           </form>
 
         </aside>
