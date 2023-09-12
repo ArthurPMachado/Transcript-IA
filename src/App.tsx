@@ -78,6 +78,19 @@ export function App() {
 
           <form className='space-y-6'>
             <div className='space-y-2'>
+              <Label>Prompt</Label>
+              <Select>
+                <SelectTrigger>
+                  <SelectValue placeholder="Selecione um prompt"/>
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="title">Titulo do Youtube</SelectItem>
+                  <SelectItem value="description">Descrição do Youtube</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
+            <div className='space-y-2'>
               <Label>Modelo</Label>
               <Select disabled defaultValue='gtp3.5'>
                 <SelectTrigger>
@@ -92,7 +105,7 @@ export function App() {
               </span>
             </div>
 
-              <Separator />
+            <Separator />
 
             <div className='space-y-2'>
               <Label>Temperatura</Label>
