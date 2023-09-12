@@ -3,6 +3,7 @@ import { Button } from "./components/ui/button";
 import { Separator } from './components/ui/separator';
 import { Textarea } from './components/ui/textarea';
 import { Label } from './components/ui/label';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './components/ui/select';
 
 export function App() {
   return (
@@ -57,11 +58,11 @@ export function App() {
 
             <Separator />
 
-            <div className='space-y-1'>
+            <div className='space-y-2'>
               <Label htmlFor="transcription_prompt">Prompt de transcrição</Label>
               <Textarea 
                 id="transcription_prompt" 
-                className='min-h-20 leading-relaxed'
+                className='h-20 leading-relaxed resize-none'
                 placeholder='Inclua palavras-chave mencionadas no vídeo separadas por vírgula (,)'
               />
             </div>
@@ -71,6 +72,43 @@ export function App() {
               <Upload className='w-4 h-4 ml-2'/>
             </Button>
           </form>
+
+          <Separator />
+
+          <form className='space-y-6'>
+            <div className='space-y-2'>
+              <Label>Modelo</Label>
+              <Select disabled defaultValue='gtp3.5'>
+                <SelectTrigger>
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="gpt3.5">GPT 3.5-turbo 16k</SelectItem>
+                </SelectContent>
+              </Select>
+              <span className='block text-xs text-muted-foreground italic'>
+                Você poderá customizar essa opção em breve
+              </span>
+            </div>
+
+              <Separator />
+
+            <div className='space-y-2'>
+              <Label>Temperatura</Label>
+              <Select disabled defaultValue='gtp3.5'>
+                <SelectTrigger>
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="gpt3.5">GPT 3.5-turbo 16k</SelectItem>
+                </SelectContent>
+              </Select>
+              <span className='block text-xs text-muted-foreground italic'>
+                Valores mais altos tendem a deixar o resultado mais criativo
+              </span>
+            </div>
+          </form>
+
         </aside>
       </main>
     </div>
