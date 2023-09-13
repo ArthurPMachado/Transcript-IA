@@ -154,3 +154,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+#API database
+api/prisma/dev.db
+api/prisma/dev.db-journal
