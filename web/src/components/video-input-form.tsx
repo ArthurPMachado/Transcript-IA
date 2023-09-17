@@ -116,7 +116,7 @@ export function VideoInputForm() {
   }, [videoFile])
 
   return (
-    <form className='space-y-6'>
+    <form onSubmit={handleUploadVideo} className='space-y-6'>
       <label
         htmlFor="video"
         className='relative border flex rounded-md aspect-video cursor-pointer border-dashed text-sm flex-col gap-2 items-center justify-center text-muted-foreground hover:bg-primary/5'
@@ -146,7 +146,11 @@ export function VideoInputForm() {
         />
       </div>
 
-      <Button disabled={status !== 'waiting'} type='submit' className='w-full'>
+      <Button
+        data-success={status !== 'success'}
+        disabled={status !== 'waiting'}
+        type='submit'
+        className='w-full data-[success=true]:bg-emerald-400'>
         {status === 'waiting' ? (
           <>
             Carregar video
