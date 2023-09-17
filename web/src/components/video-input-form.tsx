@@ -1,5 +1,5 @@
 import { FileVideo, Upload } from 'lucide-react'
-import { ChangeEvent, useMemo, useState } from 'react';
+import { ChangeEvent, FormEvent, useMemo, useRef, useState } from 'react';
 import { Separator } from './ui/separator';
 import { Label } from './ui/label';
 import { Textarea } from './ui/textarea';
@@ -7,6 +7,7 @@ import { Button } from "./ui/button";
 
 export function VideoInputForm() {
   const [videoFile, setVideoFile] = useState<File | null>(null)
+  const promptInputRef = useRef<HTMLTextAreaElement>(null)
 
   function handleFileSelected(event: ChangeEvent<HTMLInputElement>) {
     const { files } = event.currentTarget
@@ -18,6 +19,18 @@ export function VideoInputForm() {
     const selectedFile = files[0]
 
     setVideoFile(selectedFile)
+  }
+
+  function handleUploadVideo(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+
+    const prompt = promptInputRef.current?.value
+
+    if(!videoFile) {
+      return
+    }
+
+    
   }
 
   const previewURL = useMemo(() => {
@@ -51,6 +64,7 @@ export function VideoInputForm() {
       <div className='space-y-2'>
         <Label htmlFor="transcription_prompt">Prompt de transcrição</Label>
         <Textarea
+          ref={promptInputRef}
           id="transcription_prompt"
           className='h-20 leading-relaxed resize-none'
           placeholder='Inclua palavras-chave mencionadas no vídeo separadas por vírgula (,)'
