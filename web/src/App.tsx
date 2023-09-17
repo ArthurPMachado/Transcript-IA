@@ -5,6 +5,7 @@ import { Textarea } from './components/ui/textarea';
 import { Label } from './components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './components/ui/select';
 import { Slider } from './components/ui/slider';
+import { VideoInputForm } from './components/video-input-form';
 
 export function App() {
   return (
@@ -46,7 +47,7 @@ export function App() {
         </div>
 
         <aside className='w-80 space-y-6'>
-          
+          <VideoInputForm />
 
           <Separator />
 
