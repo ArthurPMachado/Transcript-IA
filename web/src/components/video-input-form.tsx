@@ -7,6 +7,7 @@ import { Label } from './ui/label';
 import { Textarea } from './ui/textarea';
 import { Button } from "./ui/button";
 import { getFFmpeg } from '@/lib/ffmpeg';
+import { api } from '@/lib/axios';
 
 export function VideoInputForm() {
   const [videoFile, setVideoFile] = useState<File | null>(null)
@@ -74,7 +75,19 @@ export function VideoInputForm() {
 
     const audioFile = await convertVideoToAudio(videoFile)
 
-    console.log(audioFile, prompt)
+    const data = new FormData()
+
+    data.append('file', audioFile)
+
+    const response = await api.post('/videos', data)
+
+    const videoId = response.data.video.id
+
+    await api.post(`/videos/${videoId}/transcription`, {
+      prompt,
+    })
+
+    
   }
 
   const previewURL = useMemo(() => {
