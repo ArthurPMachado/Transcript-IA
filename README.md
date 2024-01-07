@@ -43,6 +43,7 @@ $ git clone https://github.com/ArthurPMachado/Upload-IA.git
 $ cd Upload-IA
 ```
 **Installing dependencies**
+
 ⚠️ **Given it has both frontend and backend, it's necessary to run the following commands on each folder, either web or api**
 
 ```
